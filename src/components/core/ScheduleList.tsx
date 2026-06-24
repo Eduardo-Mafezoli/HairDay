@@ -21,7 +21,7 @@ export default function ScheduleList({
   const tarde = filtered.filter((a) => a.period === "tarde");
   const noite = filtered.filter((a) => a.period === "noite");
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 w-full px-28 py-20">
       <div className="flex gap-4 justify-between">
         <div className="flex flex-col gap-4">
           {/* Title */}
