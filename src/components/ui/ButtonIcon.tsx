@@ -1,8 +1,13 @@
 import Icon from "./Icon";
 
-export default function ButtonIcon() {
+type ButtonIconProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export default function ButtonIcon({ ...props }: ButtonIconProps) {
   return (
-    <button className="hover:text-yellow-dark text-yellow cursor-pointer">
+    <button
+      className="hover:text-yellow-dark text-yellow cursor-pointer"
+      {...props}
+    >
       <Icon name="trash" />
     </button>
   );

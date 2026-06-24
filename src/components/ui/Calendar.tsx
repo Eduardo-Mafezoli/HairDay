@@ -3,7 +3,12 @@ import { useState } from "react";
 import Icon from "./Icon";
 import Text from "./Text";
 
-export default function Calendar() {
+interface CalendarProps {
+  value?: Date;
+  onChange?: (date: Date) => void;
+}
+
+export default function Calendar({ value, onChange }: CalendarProps) {
   const weekDays = ["S", "M", "T", "W", "T", "F", "S"];
   const MONTHS = [
     "January",
@@ -21,7 +26,7 @@ export default function Calendar() {
   ];
 
   const [viewDate, setViewDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(value ?? new Date());
   const [isOpen, setIsOpen] = useState(false);
 
   const year = viewDate.getFullYear();
@@ -41,7 +46,9 @@ export default function Calendar() {
 
   function handleSelectDay(day: number, currentMonth: boolean) {
     if (!currentMonth) return;
-    setSelectedDate(new Date(year, month, day));
+    const date = new Date(year, month, day);
+    setSelectedDate(date);
+    onChange?.(date);
     setIsOpen(false);
   }
 
@@ -60,7 +67,7 @@ export default function Calendar() {
       </div>
 
       {isOpen && (
-        <div className="absolute top-full z-50 flex flex-col gap-4 w-72 bg-gray-600 rounded-xl">
+        <div className="absolute top-full right-0 z-50 flex flex-col gap-4 w-72 bg-gray-600 rounded-xl">
           <div className="flex justify-between items-center px-4 pt-4">
             <button
               type="button"

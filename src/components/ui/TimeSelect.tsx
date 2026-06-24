@@ -29,9 +29,7 @@ export default function TimeSelect({
 }: TimeSelectProps) {
   return (
     <button className={timeButtonVariants({ variant, className })} {...props}>
-      <Text variant="text-m" className="text-gray-300">
-        {children}
-      </Text>
+      <Text variant="text-m">{children}</Text>
     </button>
   );
 }
