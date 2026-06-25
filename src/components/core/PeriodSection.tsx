@@ -25,17 +25,17 @@ export default function PeriodSection({
 
   return (
     <section className="flex flex-col border border-gray-400 rounded-lg">
-      <div className="flex items-center p-2 justify-between border-b border-gray-400">
+      <div className="flex items-center px-3 py-2 justify-between border-b border-gray-400">
         <div className="flex items-center gap-2">
           <Icon name={config.icon} className="text-yellow" />
           <Text variant="text-m" className="text-gray-300">
             {config.label}
           </Text>
         </div>
-        <Text className="text-gray-300">{config.range}</Text>
+        <Text className="text-gray-300 shrink-0">{config.range}</Text>
       </div>
 
-      <div>
+      <div className="px-3">
         {appointments.length === 0 ? (
           <Text variant="text-s" className="text-gray-500 p-3">
             No appointments yet

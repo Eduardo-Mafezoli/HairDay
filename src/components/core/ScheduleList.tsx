@@ -21,10 +21,9 @@ export default function ScheduleList({
   const tarde = filtered.filter((a) => a.period === "tarde");
   const noite = filtered.filter((a) => a.period === "noite");
   return (
-    <div className="flex flex-col gap-4 w-full px-28 py-20">
-      <div className="flex gap-4 justify-between">
-        <div className="flex flex-col gap-4">
-          {/* Title */}
+    <div className="flex flex-col gap-4 w-full px-4 py-8 lg:px-28 lg:py-20">
+      <div className="flex flex-col gap-2 lg:flex-row lg:justify-between lg:items-start">
+        <div className="flex flex-col gap-2">
           <Text variant="title-l" className="text-gray-100">
             Your Schedule
           </Text>
@@ -32,12 +31,10 @@ export default function ScheduleList({
             Check your scheduled haircuts by day
           </Text>
         </div>
-        {/* Calendar */}
         <Calendar value={selectedDate} onChange={setSelectedDate} />
       </div>
 
       {/* lista de períodos */}
-
       <PeriodSection period="manha" appointments={manha} onDelete={onDelete} />
       <PeriodSection period="tarde" appointments={tarde} onDelete={onDelete} />
       <PeriodSection period="noite" appointments={noite} onDelete={onDelete} />

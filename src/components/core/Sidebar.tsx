@@ -50,7 +50,7 @@ export default function Sidebar({
   }
 
   return (
-    <div className="flex flex-col gap-6 bg-gray-500 rounded-lg w-170 h-219 p-20">
+    <div className="flex flex-col gap-6 bg-gray-500 rounded-lg p-6 lg:p-20">
       <div className="flex flex-col gap-2">
         <Text variant="title-l" className="text-gray-100">
           Schedule an appointment

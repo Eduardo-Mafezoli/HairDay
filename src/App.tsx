@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ScheduleList from "./components/core/ScheduleList";
 import Sidebar from "./components/core/Sidebar";
 import type { Appointment } from "./data/scheduleData";
+import AppHeader from "./components/core/AppHeader";
 
 export default function App() {
   const [appointments, setAppointments] = useState<Appointment[]>(() => {
@@ -31,13 +32,16 @@ export default function App() {
     .map((a) => a.time);
 
   return (
-    <main className="bg-gray-800 flex gap-6 min-h-screen p-8">
-      <Sidebar
-        onSubmit={handleSubmit}
-        disabledTimes={disabledTimes}
-        onDateChange={setSelectedDate}
-      />
-      <ScheduleList appointments={appointments} onDelete={handleDelete} />
-    </main>
+    <div className="min-h-screen bg-gray-900">
+      <AppHeader />
+      <main className="flex flex-col lg:flex-row gap-6 p-8">
+        <Sidebar
+          onSubmit={handleSubmit}
+          disabledTimes={disabledTimes}
+          onDateChange={setSelectedDate}
+        />
+        <ScheduleList appointments={appointments} onDelete={handleDelete} />
+      </main>
+    </div>
   );
 }
