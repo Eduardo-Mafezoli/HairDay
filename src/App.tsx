@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ScheduleList from "./components/core/ScheduleList";
 import Sidebar from "./components/core/Sidebar";
 import type { Appointment } from "./data/scheduleData";
 
 export default function App() {
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [appointments, setAppointments] = useState<Appointment[]>(() => {
+    const saved = localStorage.getItem("appointments");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+  }, [appointments]);
 
   function handleSubmit(appointment: Appointment) {
     setAppointments((prev) => [...prev, appointment]);
