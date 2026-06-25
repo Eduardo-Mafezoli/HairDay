@@ -11,9 +11,14 @@ import { TIME_SLOTS } from "../../data/scheduleData";
 interface SidebarProps {
   onSubmit: (appointment: Appointment) => void;
   disabledTimes: string[];
+  onDateChange: (date: Date) => void;
 }
 
-export default function Sidebar({ onSubmit, disabledTimes }: SidebarProps) {
+export default function Sidebar({
+  onSubmit,
+  disabledTimes,
+  onDateChange,
+}: SidebarProps) {
   const manhaSlots = TIME_SLOTS.filter((s) => s.period === "manha");
   const tardeSlots = TIME_SLOTS.filter((s) => s.period === "tarde");
   const noiteSlots = TIME_SLOTS.filter((s) => s.period === "noite");
@@ -59,7 +64,13 @@ export default function Sidebar({ onSubmit, disabledTimes }: SidebarProps) {
         <Text variant="title-s" className="text-gray-100">
           Date
         </Text>
-        <Calendar value={selectedDate} onChange={setSelectedDate} />
+        <Calendar
+          value={selectedDate}
+          onChange={(date) => {
+            setSelectedDate(date);
+            onDateChange(date);
+          }}
+        />
       </div>
 
       <div className="flex flex-col gap-4">
