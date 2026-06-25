@@ -37,27 +37,10 @@ export default function ScheduleList({
       </div>
 
       {/* lista de períodos */}
-      {manha.length > 0 && (
-        <PeriodSection
-          period="manha"
-          appointments={manha}
-          onDelete={onDelete}
-        />
-      )}
-      {tarde.length > 0 && (
-        <PeriodSection
-          period="tarde"
-          appointments={tarde}
-          onDelete={onDelete}
-        />
-      )}
-      {noite.length > 0 && (
-        <PeriodSection
-          period="noite"
-          appointments={noite}
-          onDelete={onDelete}
-        />
-      )}
+
+      <PeriodSection period="manha" appointments={manha} onDelete={onDelete} />
+      <PeriodSection period="tarde" appointments={tarde} onDelete={onDelete} />
+      <PeriodSection period="noite" appointments={noite} onDelete={onDelete} />
     </div>
   );
 }
