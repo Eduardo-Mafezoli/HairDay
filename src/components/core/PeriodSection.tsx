@@ -36,14 +36,20 @@ export default function PeriodSection({
       </div>
 
       <div>
-        {appointments.map((appointment) => (
-          <AppointmentItem
-            key={appointment.id}
-            time={appointment.time}
-            clientName={appointment.clientName}
-            onDelete={() => onDelete(appointment.id)}
-          />
-        ))}
+        {appointments.length === 0 ? (
+          <Text variant="text-s" className="text-gray-500 p-3">
+            No appointments yet
+          </Text>
+        ) : (
+          appointments.map((appointment) => (
+            <AppointmentItem
+              key={appointment.id}
+              time={appointment.time}
+              clientName={appointment.clientName}
+              onDelete={() => onDelete(appointment.id)}
+            />
+          ))
+        )}
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ const timeButtonVariants = cva(
         default: "bg-gray-600 border-gray-400 text-gray-200 hover:bg-gray-500",
         selected: "bg-gray-600 border-yellow text-yellow",
         disabled:
-          "border-gray-600 text-gray-500 pointer-events-none opacity-30",
+          "bg-gray-800 border-gray-600 text-gray-500 pointer-events-none opacity-30",
       },
     },
     defaultVariants: { variant: "default" },
